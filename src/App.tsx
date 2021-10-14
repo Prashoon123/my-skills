@@ -126,31 +126,37 @@ function App() {
   }, [skill]);
 
   return (
-    <div className="app">
-      <h1>My Skills</h1>
+    <>
+      <h2 className="notice">
+        This website only works on screen sizes that are greater than 746px
+      </h2>
 
-      <DndContext onDragEnd={handleDragEnd}>
-        <Droppable id="droppable1">
-          {isDropped ? <h2>{data}</h2> : <h2>Drop here</h2>}
-        </Droppable>
+      <div className="app">
+        <h1>My Skills</h1>
 
-        <div className="app__options">
-          {containers.map((id, index) => (
-            <Draggable key={id} id={id}>
-              <img src={containerImages[index]} alt="" />
+        <DndContext onDragEnd={handleDragEnd}>
+          <Droppable id="droppable1">
+            {isDropped ? <h2>{data}</h2> : <h2>Drop here</h2>}
+          </Droppable>
 
-              <div style={{ height: 20 }} />
+          <div className="app__options">
+            {containers.map((id, index) => (
+              <Draggable key={id} id={id}>
+                <img src={containerImages[index]} alt="" />
 
-              <h2>{id}</h2>
-            </Draggable>
-          ))}
-        </div>
+                <div style={{ height: 20 }} />
 
-        <Droppable id="droppable2">
-          {isDropped ? <h2>{data}</h2> : <h2>Drop here</h2>}
-        </Droppable>
-      </DndContext>
-    </div>
+                <h2>{id}</h2>
+              </Draggable>
+            ))}
+          </div>
+
+          <Droppable id="droppable2">
+            {isDropped ? <h2>{data}</h2> : <h2>Drop here</h2>}
+          </Droppable>
+        </DndContext>
+      </div>
+    </>
   );
 }
 
